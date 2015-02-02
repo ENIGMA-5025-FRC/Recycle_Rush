@@ -5,8 +5,10 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
+import org.usfirst.frc.team5025.robot.commands.DriveCommand;
 import org.usfirst.frc.team5025.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5025.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5025.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -18,9 +20,11 @@ import org.usfirst.frc.team5025.robot.subsystems.ExampleSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static final DriveSubsystem mDriveSubsystem = new DriveSubsystem();
 	public static OI oi;
 
     Command autonomousCommand;
+    Command driveCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -30,6 +34,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
+        driveCommand = new DriveCommand();
     }
 	
 	public void disabledPeriodic() {
@@ -54,6 +59,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        driveCommand.start();
     }
 
     /**
@@ -68,6 +74,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	((DriveCommand) driveCommand).bypassRun();
         Scheduler.getInstance().run();
     }
     
