@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5025.robot;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.CANTalon.ControlMode;
 import edu.wpi.first.wpilibj.TalonSRX;
 
 /**
@@ -10,16 +11,19 @@ import edu.wpi.first.wpilibj.TalonSRX;
  * floating around.
  */
 public class RobotMap {
-	public static TalonSRX L_FRONT_MOTOR = new TalonSRX(1);
-	public static TalonSRX L_REAR_MOTOR = new TalonSRX(2);
-	public static TalonSRX R_FRONT_MOTOR = new TalonSRX(3);
-	public static TalonSRX R_REAR_MOTOR = new TalonSRX(4);
+	public static CANTalon L_FRONT_MOTOR = new CANTalon(1);
+	public static CANTalon L_REAR_MOTOR = new CANTalon(2);
+	public static CANTalon R_FRONT_MOTOR = new CANTalon(3);
+	public static CANTalon R_REAR_MOTOR = new CANTalon(4);
 	
 	
 	//Yes!! I have shot Garfield! Arthur is president! I am a Stalwart!;
 	
 	public RobotMap(){
-		
+		L_FRONT_MOTOR.changeControlMode(ControlMode.PercentVbus);
+		L_REAR_MOTOR.changeControlMode(ControlMode.PercentVbus);
+		R_FRONT_MOTOR.changeControlMode(ControlMode.PercentVbus);
+		R_REAR_MOTOR.changeControlMode(ControlMode.PercentVbus);
 	}
 	
 }

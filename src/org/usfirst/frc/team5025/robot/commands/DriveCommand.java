@@ -4,6 +4,7 @@ import org.usfirst.frc.team5025.robot.OI;
 import org.usfirst.frc.team5025.robot.Robot;
 import org.usfirst.frc.team5025.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -20,17 +21,18 @@ public class DriveCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	mDrive.drive(1.0, 0.0);
+    	mDrive.setSafetyEnabled(false);
     }
-
+    
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	mDrive.mecanumDrive_Cartesian(OI.getDriverX(), OI.getDriverZ(), OI.getDriverY(), 0);
+    	mDrive.mecanumDrive_Cartesian(OI.getDriverX(), -OI.getDriverZ(), OI.getDriverY(), 0);
     }
     
     /*In case execute doesn't work, use this and call it in teleopPeriodic*/
     public void bypassRun(){
-    	mDrive.mecanumDrive_Cartesian(OI.getDriverX(), OI.getDriverZ(), OI.getDriverY(), 0.0);
+    	mDrive.mecanumDrive_Cartesian(OI.getDriverX(), -OI.getDriverZ(), OI.getDriverY(), 0.0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

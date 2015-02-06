@@ -10,7 +10,7 @@ import org.usfirst.frc.team5025.robot.commands.ExampleCommand;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	public static Joystick mDriverJoystick = new Joystick(1);
+	public static Joystick mDriverJoystick = new Joystick(0);
 	
 	public OI(){
 		
