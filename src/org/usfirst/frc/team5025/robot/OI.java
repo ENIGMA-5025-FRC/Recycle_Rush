@@ -2,6 +2,7 @@ package org.usfirst.frc.team5025.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team5025.robot.commands.ExampleCommand;
 
@@ -11,6 +12,7 @@ import org.usfirst.frc.team5025.robot.commands.ExampleCommand;
  */
 public class OI {
 	public static Joystick mDriverJoystick = new Joystick(0);
+	public static Button mMecanumForceBtn = new JoystickButton(mDriverJoystick, 2);
 	
 	public OI(){
 		
@@ -19,5 +21,7 @@ public class OI {
 	public static double getDriverX(){ return mDriverJoystick.getX(); }
 	public static double getDriverY(){ return mDriverJoystick.getY(); }
 	public static double getDriverZ(){ return mDriverJoystick.getZ(); }
+	
+	public static boolean getMecanumToggle(){ return mMecanumForceBtn.get(); }
 }
 

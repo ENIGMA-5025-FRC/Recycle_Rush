@@ -14,7 +14,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveCommand extends Command {
 	
 	private RobotDrive mDrive = new RobotDrive(RobotMap.L_FRONT_MOTOR, RobotMap.L_REAR_MOTOR, RobotMap.R_FRONT_MOTOR, RobotMap.R_REAR_MOTOR);
-
+	private boolean mMecanumToggle = false;
+	
     public DriveCommand() {
     	requires(Robot.mDriveSubsystem);
     }
@@ -27,12 +28,17 @@ public class DriveCommand extends Command {
     
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	mDrive.mecanumDrive_Cartesian(OI.getDriverX(), -OI.getDriverZ(), OI.getDriverY(), 0);
+    	if(OI.getMecanumToggle()) mMecanumToggle =! mMecanumToggle;
+    	if(!mMecanumToggle){ mDrive.mecanumDrive_Cartesian(OI.getDriverX(), -OI.getDriverZ(), OI.getDriverY(), 0.0); }
+    	else{ mDrive.mecanumDrive_Cartesian(OI.getDriverX(), OI.getDriverY(), 0.0, 0.0); }
     }
     
     /*In case execute doesn't work, use this and call it in teleopPeriodic*/
     public void bypassRun(){
-    	mDrive.mecanumDrive_Cartesian(OI.getDriverX(), -OI.getDriverZ(), OI.getDriverY(), 0.0);
+    	System.out.println("Mecanum toggle: " + mMecanumToggle);
+    	if(OI.getMecanumToggle()){ mDrive.mecanumDrive_Cartesian(OI.getDriverX(), 0.0, OI.getDriverY(), 0.0); }else{
+    		mDrive.mecanumDrive_Cartesian(OI.getDriverX(), -OI.getDriverZ(), OI.getDriverY(), 0.0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
