@@ -21,7 +21,7 @@ public class DriveCommand extends Command {
 		if(in > 1.0){
 			ret = 0.95;
 		}else if(in < -1.0){
-			ret = -0.951;
+			ret = -0.95;
 		}else{
 			ret = in;
 		}
@@ -51,7 +51,7 @@ public class DriveCommand extends Command {
 //    	if(OI.getMecanumToggle()){ mDrive.mecanumDrive_Cartesian(OI.getDriverX(), 0.0, OI.getDriverY(), 0.0); }else{
 //    		mDrive.mecanumDrive_Cartesian(OI.getDriverX(), -OI.getDriverZ(), OI.getDriverY(), 0.0);
 //    	}
-    	mDrive.mecanumDrive_Cartesian(clamp(OI.getDriverX()), OI.getDriverY(), clamp(OI.getDriverZ()), clamp(OI.getDriverTwist()));
+    	mDrive.mecanumDrive_Cartesian(-clamp(OI.getDriverY()), clamp(OI.getDriverX()), clamp(OI.getDriverZ()), clamp(OI.getDriverTwist()));
     }
 
     // Make this return true when this Command no longer needs to run execute()

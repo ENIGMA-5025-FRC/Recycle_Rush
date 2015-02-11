@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveSubsystem mDriveSubsystem = new DriveSubsystem();
 	public static OI oi;
 
+	CameraServer server;
     Command autonomousCommand;
     Command driveCommand;
 
@@ -37,6 +38,9 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
         driveCommand = new DriveCommand();
+        server = CameraServer.getInstance();
+        server.setQuality(50);
+        server.startAutomaticCapture("cam0");
     }
 	
 	public void disabledPeriodic() {
