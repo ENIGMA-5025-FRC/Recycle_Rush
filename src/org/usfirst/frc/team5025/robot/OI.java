@@ -21,6 +21,7 @@ public class OI {
 	public static double getDriverX(){ return mDriverJoystick.getX(); }
 	public static double getDriverY(){ return mDriverJoystick.getY(); }
 	public static double getDriverZ(){ return mDriverJoystick.getZ(); }
+	public static double getDriverTwist(){ return mDriverJoystick.getTwist(); }
 	
 	public static boolean getMecanumToggle(){ return mMecanumForceBtn.get(); }
 }

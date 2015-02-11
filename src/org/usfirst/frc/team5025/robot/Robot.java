@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.vision.USBCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 
 import org.usfirst.frc.team5025.robot.commands.DriveCommand;
 import org.usfirst.frc.team5025.robot.commands.ExampleCommand;
@@ -35,7 +37,6 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
         driveCommand = new DriveCommand();
-        System.out.println("Initializing");
     }
 	
 	public void disabledPeriodic() {
@@ -68,7 +69,7 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-
+    	
     }
 
     /**
@@ -77,7 +78,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	((DriveCommand) driveCommand).bypassRun();
     	System.out.println("Teleop Active");
-        Scheduler.getInstance().run();
+        Scheduler.getInstance().run(); 
     }
     
     /**
