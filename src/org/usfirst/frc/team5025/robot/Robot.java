@@ -4,6 +4,7 @@ package org.usfirst.frc.team5025.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.vision.USBCamera;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -39,8 +40,8 @@ public class Robot extends IterativeRobot {
         autonomousCommand = new ExampleCommand();
         driveCommand = new DriveCommand();
         server = CameraServer.getInstance();
-        server.setQuality(50);
-        server.startAutomaticCapture("cam0");
+		server.setQuality(50);
+		server.startAutomaticCapture("cam0");
     }
 	
 	public void disabledPeriodic() {

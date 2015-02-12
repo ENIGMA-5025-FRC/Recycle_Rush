@@ -47,11 +47,7 @@ public class DriveCommand extends Command {
     
     /*In case execute doesn't work, use this and call it in teleopPeriodic*/
     public void bypassRun(){
-    	System.out.println("Mecanum toggle: " + mMecanumToggle);
-//    	if(OI.getMecanumToggle()){ mDrive.mecanumDrive_Cartesian(OI.getDriverX(), 0.0, OI.getDriverY(), 0.0); }else{
-//    		mDrive.mecanumDrive_Cartesian(OI.getDriverX(), -OI.getDriverZ(), OI.getDriverY(), 0.0);
-//    	}
-    	mDrive.mecanumDrive_Cartesian(-clamp(OI.getDriverY()), clamp(OI.getDriverX()), clamp(OI.getDriverZ()), clamp(OI.getDriverTwist()));
+    	mDrive.mecanumDrive_Cartesian(clamp(OI.getDriverAxis(0)), clamp(OI.getDriverAxis(2)), clamp(OI.getDriverAxis(1)), clamp(OI.getDriverAxis(3)));
     }
 
     // Make this return true when this Command no longer needs to run execute()

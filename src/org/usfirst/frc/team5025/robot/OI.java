@@ -18,6 +18,7 @@ public class OI {
 		
 	}
 	
+	public static double getDriverAxis(int _axis){ return mDriverJoystick.getRawAxis(_axis); }
 	public static double getDriverX(){ return mDriverJoystick.getX(); }
 	public static double getDriverY(){ return mDriverJoystick.getY(); }
 	public static double getDriverZ(){ return mDriverJoystick.getZ(); }
