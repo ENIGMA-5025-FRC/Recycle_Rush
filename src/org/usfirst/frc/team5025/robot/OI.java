@@ -12,6 +12,7 @@ import org.usfirst.frc.team5025.robot.commands.ExampleCommand;
  */
 public class OI {
 	public static Joystick mDriverJoystick = new Joystick(0);
+	public static Joystick mManipJoystick = new Joystick(1);
 	public static Button mMecanumForceBtn = new JoystickButton(mDriverJoystick, 2);
 	
 	public OI(){
@@ -23,6 +24,12 @@ public class OI {
 	public static double getDriverY(){ return mDriverJoystick.getY(); }
 	public static double getDriverZ(){ return mDriverJoystick.getZ(); }
 	public static double getDriverTwist(){ return mDriverJoystick.getTwist(); }
+	
+	public static double getManipulatorX(){ return mManipJoystick.getX(); }
+	public static double getManipulatorY(){ return mManipJoystick.getY(); }
+	public static double getManipulatorZ(){ return mManipJoystick.getZ(); }
+	public static double getManipulatorTwist(){ return mManipJoystick.getTwist(); }
+	
 	
 	public static boolean getMecanumToggle(){ return mMecanumForceBtn.get(); }
 }

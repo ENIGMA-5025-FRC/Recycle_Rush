@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 
 import org.usfirst.frc.team5025.robot.commands.DriveCommand;
 import org.usfirst.frc.team5025.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5025.robot.commands.LiftManualCommand;
 import org.usfirst.frc.team5025.robot.subsystems.*;
 
 /**
@@ -29,6 +30,7 @@ public class Robot extends IterativeRobot {
 	CameraServer server;
     Command autonomousCommand;
     Command driveCommand;
+    Command manualLiftCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -39,6 +41,7 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
         driveCommand = new DriveCommand();
+        manualLiftCommand = new LiftManualCommand();
         server = CameraServer.getInstance();
 		server.setQuality(50);
 		server.startAutomaticCapture("cam0");
@@ -82,7 +85,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
     	((DriveCommand) driveCommand).bypassRun();
-    	System.out.println("Teleop Active");
+    	((LiftManualCommand)manualLiftCommand).manualRun();
         Scheduler.getInstance().run(); 
     }
     
