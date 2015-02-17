@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveCommand extends Command {
 	
-	private RobotDrive mDrive = new RobotDrive(RobotMap.L_FRONT_MOTOR, RobotMap.L_REAR_MOTOR, RobotMap.R_FRONT_MOTOR, RobotMap.R_REAR_MOTOR);
+	private RobotDrive mDrive = new RobotDrive(RobotMap.R_FRONT_MOTOR, RobotMap.R_REAR_MOTOR, RobotMap.L_FRONT_MOTOR, RobotMap.L_REAR_MOTOR);
 	private boolean mMecanumToggle = false;
 	
 	private double clamp(double in){
