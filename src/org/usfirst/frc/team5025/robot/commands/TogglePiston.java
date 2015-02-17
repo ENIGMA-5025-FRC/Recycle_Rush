@@ -4,17 +4,19 @@ import org.usfirst.frc.team5025.robot.OI;
 import org.usfirst.frc.team5025.robot.Robot;
 import org.usfirst.frc.team5025.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class LiftManualCommand extends Command {
+public class TogglePiston extends Command {
 
-    public LiftManualCommand() {
+    public TogglePiston() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.mLiftSystem);
+    	requires(Robot.mClawSystem);
     }
 
     // Called just before this Command runs the first time
@@ -24,13 +26,7 @@ public class LiftManualCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    }
-    
-    public void manualRun(){
-    	RobotMap.R_LIFT_MOTOR.set(OI.getManipulatorTwist());
-    	RobotMap.L_LIFT_MOTOR.set(OI.getManipulatorY());
-    	
+    	RobotMap.R_CLAW_PISTON.set(DoubleSolenoid.Value.kForward);
     }
 
     // Make this return true when this Command no longer needs to run execute()

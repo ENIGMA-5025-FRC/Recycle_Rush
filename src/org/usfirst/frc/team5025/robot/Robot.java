@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team5025.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -25,7 +26,11 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveSubsystem mDriveSubsystem = new DriveSubsystem();
+	public static final LiftSubsystem mLiftSystem = new LiftSubsystem();
+	public static final ClawSubsystem mClawSystem = new ClawSubsystem();
 	public static OI oi;
+	
+	Compressor comp = new Compressor(0);
 
 	CameraServer server;
     Command autonomousCommand;
@@ -45,6 +50,7 @@ public class Robot extends IterativeRobot {
         server = CameraServer.getInstance();
 		server.setQuality(50);
 		server.startAutomaticCapture("cam0");
+		comp.setClosedLoopControl(true);
     }
 	
 	public void disabledPeriodic() {

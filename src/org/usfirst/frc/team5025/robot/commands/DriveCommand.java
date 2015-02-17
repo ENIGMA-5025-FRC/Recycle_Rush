@@ -34,7 +34,6 @@ public class DriveCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	mDrive.drive(1.0, 0.0);
     	//mDrive.setSafetyEnabled(false);
     }
     
