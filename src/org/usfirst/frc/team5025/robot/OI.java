@@ -5,8 +5,10 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team5025.robot.commands.ClosePistonCommand;
+import org.usfirst.frc.team5025.robot.commands.ClosePistonCommand_2;
 import org.usfirst.frc.team5025.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5025.robot.commands.OpenPistonCommand;
+import org.usfirst.frc.team5025.robot.commands.OpenPistonCommand_2;
 import org.usfirst.frc.team5025.robot.commands.TogglePiston;
 
 /**
@@ -19,10 +21,14 @@ public class OI {
 	public static Button mMecanumForceBtn = new JoystickButton(mDriverJoystick, 2);
 	public static Button mPistonTriggerBtn = new JoystickButton(mManipJoystick, 1);
 	public static Button mClosePistonBtn = new JoystickButton(mManipJoystick, 2);
+	public static Button mPistonOpen2 = new JoystickButton(mManipJoystick, 3);
+	public static Button mPistonClose2 = new JoystickButton(mManipJoystick, 4);
 	
 	public OI(){
 		mPistonTriggerBtn.whenPressed(new OpenPistonCommand());
 		mClosePistonBtn.whenPressed(new ClosePistonCommand());
+		mPistonOpen2.whenPressed(new OpenPistonCommand_2());
+		mPistonClose2.whenPressed(new ClosePistonCommand_2());
 	}
 	
 	public static double getDriverAxis(int _axis){ return mDriverJoystick.getRawAxis(_axis); }

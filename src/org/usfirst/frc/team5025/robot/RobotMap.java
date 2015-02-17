@@ -19,8 +19,8 @@ public class RobotMap {
 	public static CANTalon R_REAR_MOTOR = new CANTalon(4);
 	public static VictorSP R_LIFT_MOTOR = new VictorSP(0);
 	public static VictorSP L_LIFT_MOTOR = new VictorSP(1);
-	public static DoubleSolenoid R_CLAW_PISTON = new DoubleSolenoid(0, 1);
-	public static DoubleSolenoid L_CLAW_PISTON = new DoubleSolenoid(2, 3);
+	public static DoubleSolenoid R_CLAW_PISTON = new DoubleSolenoid(2, 3);
+	public static DoubleSolenoid L_CLAW_PISTON = new DoubleSolenoid(0, 1);
 	
 	
 	//Yes!! I have shot Garfield! Arthur is president! I am a Stalwart!;
