@@ -28,6 +28,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveSubsystem mDriveSubsystem = new DriveSubsystem();
 	public static final LiftSubsystem mLiftSystem = new LiftSubsystem();
 	public static final ClawSubsystem mClawSystem = new ClawSubsystem();
+	public static final ClawSubsystem_2 mClawSystem2 = new ClawSubsystem_2();
 	public static OI oi;
 	
 	Compressor comp = new Compressor(0);
