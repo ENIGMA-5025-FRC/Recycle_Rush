@@ -3,6 +3,8 @@ package org.usfirst.frc.team5025.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.image.NIVisionException;
@@ -10,6 +12,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.vision.USBCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 
+import org.usfirst.frc.team5025.robot.commands.CameraMoveCommand;
 import org.usfirst.frc.team5025.robot.commands.DriveCommand;
 import org.usfirst.frc.team5025.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5025.robot.commands.LiftManualCommand;
@@ -33,10 +36,11 @@ public class Robot extends IterativeRobot {
 	
 	Compressor comp = new Compressor(0);
 
-	CameraServer server;
+	//CameraServer server;
     Command autonomousCommand;
     Command driveCommand;
     Command manualLiftCommand;
+    Command manualCameraControl;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -48,9 +52,10 @@ public class Robot extends IterativeRobot {
         autonomousCommand = new ExampleCommand();
         driveCommand = new DriveCommand();
         manualLiftCommand = new LiftManualCommand();
-        server = CameraServer.getInstance();
-		server.setQuality(50);
-		server.startAutomaticCapture("cam0");
+        manualCameraControl = new CameraMoveCommand();
+        //server = CameraServer.getInstance();
+		//server.setQuality(50);
+		//server.startAutomaticCapture("cam0");
 		comp.setClosedLoopControl(true);
     }
 	
@@ -61,6 +66,13 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
+        Timer t = new Timer();
+        RobotDrive drive = new RobotDrive(1,  2, 3, 4);
+        t.start();
+        while(t.get() < 2.0){
+        	drive.drive(0.8, 0.0);
+        }
+        t.stop();
     }
 
     /**
@@ -93,6 +105,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	((DriveCommand) driveCommand).bypassRun();
     	((LiftManualCommand)manualLiftCommand).manualRun();
+    	((CameraMoveCommand)manualCameraControl).manualRun();
         Scheduler.getInstance().run(); 
     }
     

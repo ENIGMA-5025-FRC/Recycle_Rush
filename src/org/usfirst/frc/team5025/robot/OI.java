@@ -23,6 +23,10 @@ public class OI {
 	public static Button mClosePistonBtn = new JoystickButton(mManipJoystick, 2);
 	public static Button mPistonOpen2 = new JoystickButton(mManipJoystick, 3);
 	public static Button mPistonClose2 = new JoystickButton(mManipJoystick, 4);
+	public static Button mSemiSpeed_L = new JoystickButton(mManipJoystick, 5);
+	public static Button mFullSpeed_L = new JoystickButton(mManipJoystick, 6);
+	public static Button mSemiSpeed_R = new JoystickButton(mManipJoystick, 7);
+	public static Button mFullSpeed_R = new JoystickButton(mManipJoystick, 8);
 	
 	public OI(){
 		mPistonTriggerBtn.whenPressed(new OpenPistonCommand());
@@ -41,7 +45,8 @@ public class OI {
 	public static double getManipulatorY(){ return mManipJoystick.getY(); }
 	public static double getManipulatorZ(){ return mManipJoystick.getZ(); }
 	public static double getManipulatorTwist(){ return mManipJoystick.getTwist(); }
-	
+	public static boolean getCameraBankLeft(){ return (mManipJoystick.getRawAxis(4) == -1.0); }
+	public static boolean getCameraBankRight(){ return (mManipJoystick.getRawAxis(4) == 1.0); }
 	
 	public static boolean getMecanumToggle(){ return mMecanumForceBtn.get(); }
 	public static boolean getPistonTrigger(){ return mPistonTriggerBtn.get(); }

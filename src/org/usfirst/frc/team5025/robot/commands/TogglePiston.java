@@ -17,11 +17,12 @@ public class TogglePiston extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.mClawSystem);
+    	RobotMap.L_CLAW_PISTON.set(DoubleSolenoid.Value.kForward);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	RobotMap.L_CLAW_PISTON.set(DoubleSolenoid.Value.kForward);
     }
 
     // Called repeatedly when this Command is scheduled to run

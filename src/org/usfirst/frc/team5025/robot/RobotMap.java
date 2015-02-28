@@ -3,6 +3,7 @@ package org.usfirst.frc.team5025.robot;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CANTalon.ControlMode;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.VictorSP;
 
@@ -18,10 +19,11 @@ public class RobotMap {
 	public static CANTalon R_FRONT_MOTOR = new CANTalon(3);
 	public static CANTalon R_REAR_MOTOR = new CANTalon(4);
 	public static VictorSP R_LIFT_MOTOR = new VictorSP(0);
-	public static VictorSP F_LIFT_MOTOR = new VictorSP(1);
-	public static VictorSP L_LIFT_MOTOR = new VictorSP(2);
+	//public static VictorSP F_LIFT_MOTOR = new VictorSP(1);
+	public static VictorSP L_LIFT_MOTOR = new VictorSP(1);
+	public static Servo CAMERA_MOUNT = new Servo(3);
 	public static DoubleSolenoid R_CLAW_PISTON = new DoubleSolenoid(2, 3);
-	public static DoubleSolenoid L_CLAW_PISTON = new DoubleSolenoid(0, 1);
+	public static DoubleSolenoid L_CLAW_PISTON = new DoubleSolenoid(1, 4);
 	
 	
 	//Yes!! I have shot Garfield! Arthur is president! I am a Stalwart!;
